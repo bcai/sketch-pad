@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <div id="button-div"><button type="button">Reset</button></div>
+    <div class="container"></div>
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<script>
+    function gridCreate(size){
+        var cWidth = $('.container').width();
+        var adjustWidth = cWidth - (size*6);
+        for(var i=0; i<size; i++){
+            for(var j=0; j<size; j++){
+                $('<div />').addClass('grid').attr('id','row'+i).appendTo('.container').css({'width':adjustWidth/size,'height':adjustWidth/size});
+            }
+            $('<div />').addClass('newRow').appendTo('.container').css({'clear':'both'});
+        }
+        $('.grid').closest('div').mouseenter(function(e){
+            $(this).css({'background-color':'NAVY'});
+        });
+    }
+    $(document).ready(function(){
+
+        gridCreate(16);
+
+        $('button').on('click',function(event){
+            event.preventDefault();
+            event.stopPropagation();
+            var size = prompt("What size grid would you like to create? (ie. 4 = 4x4, max = 50");
+            while (size < 1 || size > 80){
+                if(size>80)
+                    size = prompt("That size is too large. Please reenter a size 50 or less.");
+                if(size<1)
+                    size = prompt("That size is too small. Please reenter a size greater than 0.");
+            }
+            $('.container').find('.grid').remove();
+            $('.container').find('.newRow').remove();
+            gridCreate(size);
+        });
+    });
+</script>
+
+</body>
+</html>

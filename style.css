@@ -1,0 +1,26 @@
+html, body{
+	margin: 0;
+	padding:0;
+	bottom:0;
+	top:0;
+	right:0;
+	left:0;
+	height: 100%;
+	width: 100%;
+}
+#button-div{
+	margin-top:1%;
+	margin-bottom: 1%;
+	width:100%;
+	text-align: center;
+}
+.container{
+	width:40%;
+	margin:0 auto;
+}
+.grid{
+	float:left;
+	margin:2px;
+	border:solid 1px black;
+	border-radius: 3px;
+}
